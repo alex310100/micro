@@ -24,3 +24,31 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push tag to Docker Hub
         run: docker push ajladdin/ma-docs-service:latest
+
+
+##########
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      #build image
+      - name: Build Docker Image
+        run: docker build ./venv/app1 -t ajladdin/ma-docs-service:latest
+      #Test
+#Login and push
+      - name: Login into Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push tag to Docker Hub
+        run: docker push ajladdin/ma-docs-service:latest
