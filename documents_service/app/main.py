@@ -12,7 +12,7 @@ class Document:
         self.title = title
         self.value = value
 
-documents: List[Document] = [#для 10
+documents: List[Document] = [
    # Document(0, 'First doc', 'rtgdrtgrdtg'),
    # Document(1,'Second', 'dfvdssdfdgfgdfg')
 ]
